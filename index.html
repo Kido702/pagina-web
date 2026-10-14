@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitsubishi Lancer Evolution IX | Leyenda del Rally</title>
+    <style>
+        :root {
+            --primary: #e60012; /* Rojo característico */
+            --dark-bg: #0f1115;
+            --card-bg: #1a1d24;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #ff3344;
+            --border: #2a2e39;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+       
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background-color: rgba(15, 17, 21, 0.95);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+       
+        header.hero {
+            padding: 5rem 8% 4rem;
+            text-align: center;
+            background: radial-gradient(circle at top, #231215 0%, var(--dark-bg) 70%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(230, 0, 18, 0.15);
+            color: var(--accent);
+            border: 1px solid var(--primary);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+            font-size: 1.15rem;
+        }
+
+       
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+      
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .spec-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.8rem;
+            text-align: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .spec-card .val {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .spec-card .label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-box {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .feature-box h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-box h3::before {
+            content: '▪';
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .feature-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        
+        .table-container {
+            overflow-x: auto;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            margin-bottom: 4rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <nav>
+        <div class="logo">Lancer <span>Evo IX</span></div>
+        <ul>
+            <li><a href="#historia">Historia</a></li>
+            <li><a href="#especificaciones">Especificaciones</a></li>
+            <li><a href="#versiones">Versiones</a></li>
+        </ul>
+    </nav>
+
+    
+    <header class="hero">
+        <span class="badge">Generación 2005 - 2007</span>
+        <h1>Mitsubishi Lancer Evolution IX</h1>
+        <p>
+            El culmen de la era dorada del rally. El último en portar el legendario 
+            motor 4G63 con tecnología MIVEC y tracción total avanzada Super AYC.
+        </p>
+    </header>
+
+    <main class="container">
+
+        
+        <section id="especificaciones">
+            <h2 class="section-title">Ficha Técnica Principal</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="val">2.0L Turbo</div>
+                    <div class="label">Motor 4G63T DOHC 16V MIVEC</div>
+                </div>
+                <div class="spec-card">
+                    <div class="val">280+ CV</div>
+                    <div class="label">Potencia de fábrica (hasta 366 CV FQ)</div>
+                </div>
+                <div class="spec-card">
+                    <div class="val">4.5 s</div>
+                    <div class="label">0 a 100 km/h aprox.</div>
+                </div>
+                <div class="spec-card">
+                    <div class="val">AWD</div>
+                    <div class="label">Super AYC + ACD</div>
+                </div>
+            </div>
+        </section>
+
+       
+        <section id="historia">
+            <h2 class="section-title">Ingeniería y Rendimiento</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3>Tecnología MIVEC</h3>
+                    <p>
+                        Por primera vez en la saga Evolution, el legendario bloque 4G63 incorporó distribución 
+                        de válvulas variable continua en admisión (MIVEC), mejorando la respuesta a bajas revoluciones y optimizando el consumo.
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <h3>Tracción Total Inteligente</h3>
+                    <p>
+                        Equipado con el diferencial central activo (ACD) y el control de guiñada activo (Super AYC), 
+                        permitiendo seleccionar modos de conducción entre Asfalto (Tarmac), Gravilla (Gravel) y Nieve (Snow).
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <h3>Reducción de Peso y Chasis</h3>
+                    <p>
+                        Techo, capó y aletas de aluminio ligero para bajar el centro de gravedad. 
+                        Frenos firmados por Brembo de 4 pistones delanteros y amortiguadores deportivos Bilstein en versiones MR.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+       
+        <section id="versiones">
+            <h2 class="section-title">Versiones Destacadas</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Versión</th>
+                            <th>Transmisión</th>
+                            <th>Enfoque / Características</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>GSR</strong></td>
+                            <td>Manual 6 velocidades</td>
+                            <td>El modelo de calle completo: aire acondicionado, Super AYC, llantas Enkei y confort para el día a día.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RS</strong></td>
+                            <td>Manual 5 velocidades</td>
+                            <td>Pensado para competición y rally. Sin comodidades superfluas, diferencial autoblocante mecánico y peso mínimo.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MR (Mitsubishi Racing)</strong></td>
+                            <td>Manual 6 velocidades</td>
+                            <td>Amortiguadores Bilstein, llantas BBS forjadas, techo de aluminio y paquete aerodinámico específico.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wagon (Familiar)</strong></td>
+                            <td>Manual 6 vel. / Auto 5 vel.</td>
+                            <td>Versión familiar exclusiva para el mercado japonés (JDM) con la misma mecánica implacable del sedán.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+   
+   
+
+</body>
+</html>
